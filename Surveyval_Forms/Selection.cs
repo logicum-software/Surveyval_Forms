@@ -51,5 +51,12 @@ namespace Surveyval_Forms
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Manager dlgManager = new Manager();
+
+            dlgManager.ShowDialog();
+        }
     }
 }
