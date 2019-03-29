@@ -38,10 +38,11 @@ namespace Surveyval_Forms
             }
 
             // listView2 füllen
+            //listView2.Columns.Add("Fragetext", 760, HorizontalAlignment.Left);
             int i = 0;
             foreach (Frage item in appData.appFragen)
             {
-                listView2.Items.Add(new ListViewItem(item.strFragetext, i));
+                listView2.Items.Add(new ListViewItem(item.strFragetext));
                 i++;
             }
         }
