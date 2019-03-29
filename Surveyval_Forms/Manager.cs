@@ -82,7 +82,11 @@ namespace Surveyval_Forms
             dlgNeueFrage.ShowDialog();
             if (dlgNeueFrage.DialogResult == DialogResult.OK)
             {
-                appData.appFragen.Add(new Frage(dlgNeueFrage.textBox1.Text, 0));
+                if (dlgNeueFrage.radioButton2.Checked)
+                    appData.appFragen.Add(new Frage(dlgNeueFrage.textBox1.Text, 1));
+                else
+                    appData.appFragen.Add(new Frage(dlgNeueFrage.textBox1.Text, 0));
+
                 saveData();
                 refreshLists();
             }
@@ -130,6 +134,48 @@ namespace Surveyval_Forms
             }
             else
             {
+            }
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count < 1)
+            {
+                button4.Enabled = false;
+                button7.Enabled = false;
+            }
+            else
+            {
+                button4.Enabled = true;
+                button2.Enabled = false;
+                button7.Enabled = true;
+                button8.Enabled = false;
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count < 1)
+                button2.Enabled = false;
+            else
+            {
+                button2.Enabled = true;
+                button4.Enabled = false;
+                button7.Enabled = false;
+                button8.Enabled = false;
+            }
+        }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView3.SelectedItems.Count < 1)
+                button8.Enabled = false;
+            else
+            {
+                button2.Enabled = false;
+                button4.Enabled = false;
+                button7.Enabled = false;
+                button8.Enabled = true;
             }
         }
     }
