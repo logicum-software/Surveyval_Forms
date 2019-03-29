@@ -19,9 +19,9 @@ namespace Surveyval_Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Selection dlgSelection = new Selection();
+            Manager dlgManager = new Manager();
 
-            dlgSelection.ShowDialog();
+            dlgManager.ShowDialog();
         }
     }
 }

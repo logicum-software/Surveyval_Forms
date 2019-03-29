@@ -59,6 +59,7 @@ namespace Surveyval_Forms
 
             if (listView1.Items.Count > 0)
             {
+                // ÜBERPRÜFEN !!!
                 listView1.Items[0].Selected = true;
                 foreach (Frage item in appData.appFrageboegen[0].Fragen)
                     listView3.Items.Add(new ListViewItem(item.strFragetext));
