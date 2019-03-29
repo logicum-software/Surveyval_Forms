@@ -37,7 +37,6 @@ namespace Surveyval_Forms
                 //throw;
             }
 
-            // listView2 füllen
             refreshLists();
         }
 
@@ -47,13 +46,23 @@ namespace Surveyval_Forms
                 item.Remove();
 
             foreach (Fragebogen item in appData.appFrageboegen)
-                listView2.Items.Add(new ListViewItem(item.strName));
+                listView1.Items.Add(new ListViewItem(item.strName));
 
             foreach (ListViewItem item in listView2.Items)
                 item.Remove();
 
             foreach (Frage item in appData.appFragen)
                 listView2.Items.Add(new ListViewItem(item.strFragetext));
+
+            foreach (ListViewItem item in listView3.Items)
+                item.Remove();
+
+            if (listView1.Items.Count > 0)
+            {
+                listView1.Items[0].Selected = true;
+                foreach (Frage item in appData.appFrageboegen[0].Fragen)
+                    listView3.Items.Add(new ListViewItem(item.strFragetext));
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -101,6 +110,25 @@ namespace Surveyval_Forms
             finally
             {
                 fs.Close();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NeuerFragebogen dlgNeuerFragebogen = new NeuerFragebogen();
+
+            dlgNeuerFragebogen.textBox1.Text = "Bitte Namen eingeben...";
+            dlgNeuerFragebogen.textBox1.Focus();
+
+            dlgNeuerFragebogen.ShowDialog();
+            if (dlgNeuerFragebogen.DialogResult == DialogResult.OK)
+            {
+                appData.appFrageboegen.Add(new Fragebogen(dlgNeuerFragebogen.textBox1.Text, new List<Frage>()));
+                saveData();
+                refreshLists();
+            }
+            else
+            {
             }
         }
     }
