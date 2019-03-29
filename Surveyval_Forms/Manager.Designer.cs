@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -40,60 +38,46 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(53, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 20);
-            this.textBox1.TabIndex = 1;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.listView1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 50);
+            this.groupBox1.Location = new System.Drawing.Point(15, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(773, 168);
+            this.groupBox1.Size = new System.Drawing.Size(299, 171);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enthaltene Fragen";
+            this.groupBox1.Text = "Fragebogenkatalog";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.listView2);
-            this.groupBox2.Location = new System.Drawing.Point(15, 224);
+            this.groupBox2.Location = new System.Drawing.Point(320, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(773, 171);
+            this.groupBox2.Size = new System.Drawing.Size(468, 171);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fragenkatalog";
             // 
             // listView1
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(6, 19);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(761, 115);
+            this.listView1.Size = new System.Drawing.Size(287, 115);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -107,7 +91,7 @@
             this.listView2.Location = new System.Drawing.Point(6, 19);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(761, 115);
+            this.listView2.Size = new System.Drawing.Size(455, 115);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -115,21 +99,21 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(611, 140);
+            this.button1.Location = new System.Drawing.Point(7, 139);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(115, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Hinzufügen";
+            this.button1.Text = "Neuer Fragebogen";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(692, 140);
+            this.button2.Location = new System.Drawing.Point(128, 139);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(127, 23);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Entfernen";
+            this.button2.Text = "Fragebogen löschen";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -172,27 +156,63 @@
             this.button6.Text = "Speichern";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listView3);
+            this.groupBox3.Location = new System.Drawing.Point(15, 189);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(629, 200);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Enthaltene Fragen";
+            // 
+            // listView3
+            // 
+            this.listView3.GridLines = true;
+            this.listView3.Location = new System.Drawing.Point(7, 19);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(616, 175);
+            this.listView3.TabIndex = 0;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            // 
+            // button7
+            // 
+            this.button7.Enabled = false;
+            this.button7.Location = new System.Drawing.Point(650, 231);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(131, 23);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "<-- Frage hinzufügen";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Enabled = false;
+            this.button8.Location = new System.Drawing.Point(650, 261);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(131, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Frage entfernen -->";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Fragetext";
-            this.columnHeader1.Width = 755;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Fragetext";
-            this.columnHeader2.Width = 755;
+            this.columnHeader1.Width = 450;
             // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -201,15 +221,12 @@
             this.Text = "Fragebogen-Manager";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
@@ -220,7 +237,10 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

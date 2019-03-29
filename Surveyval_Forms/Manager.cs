@@ -38,13 +38,22 @@ namespace Surveyval_Forms
             }
 
             // listView2 füllen
-            //listView2.Columns.Add("Fragetext", 760, HorizontalAlignment.Left);
-            int i = 0;
+            refreshLists();
+        }
+
+        private void refreshLists()
+        {
+            foreach (ListViewItem item in listView1.Items)
+                item.Remove();
+
+            foreach (Fragebogen item in appData.appFrageboegen)
+                listView2.Items.Add(new ListViewItem(item.strName));
+
+            foreach (ListViewItem item in listView2.Items)
+                item.Remove();
+
             foreach (Frage item in appData.appFragen)
-            {
                 listView2.Items.Add(new ListViewItem(item.strFragetext));
-                i++;
-            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -65,6 +74,7 @@ namespace Surveyval_Forms
             {
                 appData.appFragen.Add(new Frage(dlgNeueFrage.textBox1.Text, 0));
                 saveData();
+                refreshLists();
             }
             else
             {
