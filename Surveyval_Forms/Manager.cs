@@ -37,50 +37,40 @@ namespace Surveyval_Forms
                 //throw;
             }
 
-            // Initialize listViews
-            foreach (ListViewItem item in listView1.Items)
-                item.Remove();
-
-            foreach (Fragebogen item in appData.appFrageboegen)
-                listView1.Items.Add(new ListViewItem(item.strName));
-
-            foreach (ListViewItem item in listView2.Items)
-                item.Remove();
-
-            foreach (Frage item in appData.appFragen)
-                listView2.Items.Add(new ListViewItem(item.strFragetext));
-
-            foreach (ListViewItem item in listView3.Items)
-                item.Remove();
+            // Initialize listViews nur 1 und 2, da für 3 Selection erforderlich
+            listView1_refresh();
+            listView2_refresh();
         }
 
-        /*private void refreshLists()
+        private void listView1_refresh()
         {
             foreach (ListViewItem item in listView1.Items)
                 item.Remove();
 
             foreach (Fragebogen item in appData.appFrageboegen)
                 listView1.Items.Add(new ListViewItem(item.strName));
+        }
 
+        private void listView2_refresh()
+        {
             foreach (ListViewItem item in listView2.Items)
                 item.Remove();
 
             foreach (Frage item in appData.appFragen)
                 listView2.Items.Add(new ListViewItem(item.strFragetext));
+        }
 
+        private void listView3_refresh()
+        {
             foreach (ListViewItem item in listView3.Items)
                 item.Remove();
 
-            if (listView1.SelectedItems.Count > -1)
+            if (appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.Count > 0)
             {
-                // ÜBERPRÜFEN, hier müssen die Fragen des ausgewählten Fragebogens angezeigt werden !!!
-                if (appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.Count > 0)
-                {
-                    foreach (Frage item in appData.appFrageboegen[0].Fragen) // appData.appFrageboegen[listView1.SelectedIndices[0].Fragen
-                        listView3.Items.Add(new ListViewItem(item.strFragetext));
-                }
+                foreach (Frage item in appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen)
+                    listView3.Items.Add(new ListViewItem(item.strFragetext));
             }
-        }*/
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -98,19 +88,25 @@ namespace Surveyval_Forms
             dlgNeueFrage.ShowDialog();
             if (dlgNeueFrage.DialogResult == DialogResult.OK)
             {
+                foreach (Frage item in appData.appFragen)
+                {
+                    if (String.Compare(item.strFragetext, dlgNeueFrage.textBox1.Text, true) > -1 &&
+                        String.Compare(item.strFragetext, dlgNeueFrage.textBox1.Text, true) < 1)
+                    {
+                        if (MessageBox.Show("Die eingegebene Frage: \n\n" + dlgNeueFrage.textBox1.Text +
+                            "\n\nscheint schon zu existieren.\n\nTrotzdem speichern?",
+                            "Frage bereits vorhanden", MessageBoxButtons.YesNo) == DialogResult.No)
+                            return;
+                    }
+                }
+
                 if (dlgNeueFrage.radioButton2.Checked)
                     appData.appFragen.Add(new Frage(dlgNeueFrage.textBox1.Text, 1));
                 else
                     appData.appFragen.Add(new Frage(dlgNeueFrage.textBox1.Text, 0));
 
                 saveData();
-
-                // Update listView2
-                foreach (ListViewItem item in listView2.Items)
-                    item.Remove();
-
-                foreach (Frage item in appData.appFragen)
-                    listView2.Items.Add(new ListViewItem(item.strFragetext));
+                listView2_refresh();
             }
             else
             {
@@ -152,13 +148,7 @@ namespace Surveyval_Forms
             {
                 appData.appFrageboegen.Add(new Fragebogen(dlgNeuerFragebogen.textBox1.Text, new List<Frage>()));
                 saveData();
-                
-                // Update listView1
-                foreach (ListViewItem item in listView1.Items)
-                    item.Remove();
-
-                foreach (Fragebogen item in appData.appFrageboegen)
-                    listView1.Items.Add(new ListViewItem(item.strName));
+                listView1_refresh();
             }
             else
             {
@@ -172,7 +162,7 @@ namespace Surveyval_Forms
                 appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.Add(appData.appFragen[listView2.SelectedIndices[0]]);
                 MessageBox.Show("Die Frage wurde hinzugefügt", "Frage hinzugefügt", MessageBoxButtons.OK);
                 saveData();
-                //refreshLists();
+                listView3_refresh();
             }
         }
 
@@ -187,15 +177,7 @@ namespace Surveyval_Forms
                 button7.Enabled = false;
                 button8.Enabled = false;
 
-                // Update listView3
-                foreach (ListViewItem item in listView3.Items)
-                    item.Remove();
-
-                if (appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.Count > 0)
-                {
-                    foreach (Frage item in appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen) // appData.appFrageboegen[listView1.SelectedIndices[0].Fragen
-                        listView3.Items.Add(new ListViewItem(item.strFragetext));
-                }
+                listView3_refresh();
             }
         }
 
@@ -232,11 +214,26 @@ namespace Surveyval_Forms
         {
             if (listView3.SelectedItems.Count > 0)
             {
-                appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.RemoveAt(listView2.SelectedIndices[0]);
+                appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.RemoveAt(listView3.SelectedIndices[0]);
                 MessageBox.Show("Die Frage wurde aus dem Fragebogen entfernt.", "Frage entfernt", MessageBoxButtons.OK);
                 saveData();
-                //refreshLists();
+                listView3_refresh();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Möchten Sie die Frage: \n\n" + "'" + listView2.SelectedItems[0].Text + "'" +
+                "\n\nwirklich dauerhaft löschen?",
+                "Frage löschen", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            else
+            {
+                appData.appFragen.RemoveAt(listView2.SelectedIndices[0]);
+                saveData();
+                listView2_refresh();
+            }
+            button4.Enabled = false;
         }
     }
 }

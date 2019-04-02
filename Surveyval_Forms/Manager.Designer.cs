@@ -122,6 +122,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Frage löschen";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -159,7 +160,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 4;
-            this.button5.Text = "Abbrechen";
+            this.button5.Text = "Schliessen";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -200,7 +201,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Fragetext";
-            this.columnHeader3.Width = 613;
+            this.columnHeader3.Width = 610;
             // 
             // button7
             // 
