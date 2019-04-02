@@ -42,9 +42,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -197,6 +197,11 @@
             this.listView3.View = System.Windows.Forms.View.Details;
             this.listView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView3_MouseClick);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Fragetext";
+            this.columnHeader3.Width = 613;
+            // 
             // button7
             // 
             this.button7.Enabled = false;
@@ -217,11 +222,7 @@
             this.button8.TabIndex = 8;
             this.button8.Text = "Frage entfernen -->";
             this.button8.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Fragetext";
-            this.columnHeader3.Width = 613;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Manager
             // 
