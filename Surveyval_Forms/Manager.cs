@@ -60,8 +60,8 @@ namespace Surveyval_Forms
             if (listView1.Items.Count > 0)
             {
                 // ÜBERPRÜFEN, hier müssen die Fragen des ausgewählten Fragebogens angezeigt werden !!!
-                listView1.Items[0].Selected = true;
-                foreach (Frage item in appData.appFrageboegen[0].Fragen)
+                //listView1.Items[0].Selected = true;
+                foreach (Frage item in appData.appFrageboegen[0].Fragen) // appData.appFrageboegen[listView1.SelectedIndices[0].Fragen
                     listView3.Items.Add(new ListViewItem(item.strFragetext));
             }
         }
@@ -139,7 +139,13 @@ namespace Surveyval_Forms
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            if (listView2.SelectedItems.Count > 0)
+            {
+                appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.Add(appData.appFragen[listView2.SelectedIndices[0]]);
+                MessageBox.Show("Die Frage wurde hinzugefügt", "Frage hinzugefügt", MessageBoxButtons.OK);
+                saveData();
+                refreshLists();
+            }
         }
 
         private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
