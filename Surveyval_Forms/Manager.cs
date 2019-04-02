@@ -235,5 +235,22 @@ namespace Surveyval_Forms
             }
             button4.Enabled = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Möchten Sie den Fragebogen: \n\n" + "'" + listView1.SelectedItems[0].Text + "'" +
+                "\n\nwirklich dauerhaft löschen?",
+                "Fragebogen löschen", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            else
+            {
+                appData.appFrageboegen.RemoveAt(listView1.SelectedIndices[0]);
+                saveData();
+                listView1_refresh();
+                listView3.Items[0].Selected = true;
+                listView3_refresh();
+            }
+            button2.Enabled = false;
+        }
     }
 }
