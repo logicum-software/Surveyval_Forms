@@ -148,7 +148,20 @@ namespace Surveyval_Forms
             }
         }
 
-        private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listView1.SelectedItems.Count < 1)
+                button2.Enabled = false;
+            else
+            {
+                button2.Enabled = true;
+                button4.Enabled = false;
+                button7.Enabled = false;
+                button8.Enabled = false;
+            }
+        }
+
+        private void listView2_MouseClick(object sender, MouseEventArgs e)
         {
             if (listView2.SelectedItems.Count < 1)
             {
@@ -164,20 +177,7 @@ namespace Surveyval_Forms
             }
         }
 
-        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            if (listView1.SelectedItems.Count < 1)
-                button2.Enabled = false;
-            else
-            {
-                button2.Enabled = true;
-                button4.Enabled = false;
-                button7.Enabled = false;
-                button8.Enabled = false;
-            }
-        }
-
-        private void listView3_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void listView3_MouseClick(object sender, MouseEventArgs e)
         {
             if (listView3.SelectedItems.Count < 1)
                 button8.Enabled = false;
