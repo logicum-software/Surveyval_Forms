@@ -59,10 +59,18 @@ namespace Surveyval_Forms
         internal Boolean isContaining(Fragebogen tmp)
         {
             foreach (Fragebogen item in appFrageboegen)
-            {
                 if (tmp.strName.Equals(item.strName))
                     return true;
-            }
+
+            return false;
+        }
+
+        internal Boolean isContaining(Frage tmp)
+        {
+            foreach (Frage item in appFragen)
+                if (tmp.strFragetext.Equals(item.strFragetext))
+                    return true;
+
             return false;
         }
 

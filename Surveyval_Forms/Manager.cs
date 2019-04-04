@@ -159,6 +159,11 @@ namespace Surveyval_Forms
         {
             if (listView2.SelectedItems.Count > 0)
             {
+                if (appData.isContaining(appData.appFragen[listView2.SelectedIndices[0]]))
+                {
+                    MessageBox.Show("Die Frage ist bereits im Fragebogen vorhanden.", "Frage vorhanden", MessageBoxButtons.OK);
+                    return;
+                }
                 appData.appFrageboegen[listView1.SelectedIndices[0]].Fragen.Add(appData.appFragen[listView2.SelectedIndices[0]]);
                 MessageBox.Show("Die Frage wurde hinzugefügt", "Frage hinzugefügt", MessageBoxButtons.OK);
                 saveData();
